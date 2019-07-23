@@ -12,7 +12,7 @@ proc index(): string =
 <body>
 <ul>
 """
-  for i in 1..2:
+  for i in 1..3:
     result.add("<li>" & link(i) & "</li>")
   result.add("""
 </ul>
@@ -21,10 +21,25 @@ proc index(): string =
 """)
 
 proc loadJS(jspath: string): string =
+  let style = """
+<style>
+div#testarea {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px;
+}
+
+th, td {
+  padding: 10px;
+}
+</style>
+"""
+
   &"""
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  {style}
   </head>
   <body>
     <main role="main">
