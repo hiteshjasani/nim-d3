@@ -1,9 +1,20 @@
 import asynchttpserver, asyncdispatch, strformat, strutils
 
-proc link(exampleNumber: int): string =
-  &"""<a href="/ex/ex{exampleNumber}">Example {exampleNumber}</a>"""
+type
+  Example = ref object
+    id: int
+    name: string
+
+proc link(ex: Example): string =
+  &"""<a href="/ex/ex{ex.id}">Example {ex.id}: {ex.name}</a>"""
 
 proc index(): string =
+  let examples = @[Example(id: 1, name: "Selecting elements and applying styles")
+                   ,Example(id: 2, name: "Appending elements")
+                   ,Example(id: 3, name: "Scaling using domain and range")
+                   ,Example(id: 4, name: "Simple plot of circles")
+                   ,Example(id: 5, name: "Full graph using circles")]
+
   result = """
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +23,8 @@ proc index(): string =
 <body>
 <ul>
 """
-  for i in 1..5:
-    result.add("<li>" & link(i) & "</li>")
+  for x in examples:
+    result.add("<li>" & link(x) & "</li>")
   result.add("""
 </ul>
 </body>
@@ -31,6 +42,19 @@ div#testarea {
 
 th, td {
   padding: 10px;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }
 </style>
 """

@@ -39,12 +39,14 @@ proc runOnce() =
 
 proc createDom(): VNode =
   result = buildHtml(tdiv):
-    h1: text "Example 4"
-    p: text "Plot circles.  The circles are only drawn once on page load and will not be redrawn even if karax redraws the vdom.  Also note that the circles are plotted with their y values upside down because we haven't applied scaling yet."
+    h1: text "Example 4: Simple plot circles"
     tdiv:
       text "<< "
       a(href = "/"): text "home"
     tdiv(id = "testarea")
+    ul:
+      li: text "Circles are only drawn once on page load and will not be redrawn even if karax redraws the vdom"
+      li: text "No scaling has been applied yet so circles are plotted with their y values upside down"
 
 setRenderer createDom
 setForeignNodeId("testarea")
