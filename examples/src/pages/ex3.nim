@@ -30,32 +30,38 @@ proc createDom(): VNode =
             th: text "Domain"
             th: text "Range"
             th: text "Scaled"
+            th: text "Expected"
         tbody:
           tr:
             td: text $orig1
             td: text "0 - 100"
             td: text "200 - 500"
             td(id = "scaleLin"): text "-"
+            td: text "215"
           tr:
             td: text $orig1
             td: text "0 - 100"
             td: text "500 - 200"
             td(id = "scaleLinR"): text "-"
+            td: text "485"
           tr:
             td: text $orig1
             td: text "0 - 100"
             td: text "brown - steelblue"
             td(id = "scaleLinColor"): text "-"
+            td: text "rgb(160, 46, 49)"
           tr:
             td: text "-0.5"
             td: text "-1, 0, 1"
             td: text "red, white, blue"
             td(id = "scalePieces1"): text "-"
+            td: text "rgb(255, 128, 128)"
           tr:
             td: text "0.5"
             td: text "-1, 0, 1"
             td: text "red, white, blue"
             td(id = "scalePieces2"): text "-"
+            td: text "rgb(128, 128, 255)"
     button(`type` = "button"):
       text "Scale values"
       proc onclick(ev: Event, n: VNode) =
