@@ -12,7 +12,7 @@ proc index(): string =
 <body>
 <ul>
 """
-  for i in 1..3:
+  for i in 1..4:
     result.add("<li>" & link(i) & "</li>")
   result.add("""
 </ul>
