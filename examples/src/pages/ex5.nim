@@ -14,15 +14,17 @@ let rawdata: seq[DataPt] = @[DataPt(x: 10.0, y: 112.1)
                              ,DataPt(x: 196.2, y: 18.5)
                              ,DataPt(x: 2.7, y: 1174.3)
                              ,DataPt(x: 100.0, y: 1100.0)
-                             ,DataPt(x: 125.4, y: 1184.9)]
+                             ,DataPt(x: 125.4, y: 1184.9)
+                             ,DataPt(x: 145.0, y: 575.0)]
 
 proc runOnce() =
   let
     svgWidth = 400
     svgHeight = 300
-    inset = 50
-    gWidth = svgWidth - inset
-    gHeight = svgHeight - inset
+    insetLeft = 80
+    insetBottom = 50
+    gWidth = svgWidth - insetLeft
+    gHeight = svgHeight - insetBottom
     minX = min(map(rawdata, proc(d: DataPt): float = d.x))
     maxX = max(map(rawdata, proc(d: DataPt): float = d.x))
     minY = min(map(rawdata, proc(d: DataPt): float = d.y))
@@ -54,16 +56,30 @@ proc runOnce() =
     .attr("width", gWidth)
     .attr("height", gHeight)
     # Origin is top-left corner, use with yRange [gHeight 0]
-    .attr("transform", translate(inset, 0))
+    .attr("transform", translate(insetLeft, 0))
     # Change origin to bottom-left corner, use with yRange [0 gHeight]
-    # .attr("transform", translateAndScale(inset, gHeight, 1, -1))
+    # .attr("transform", translateAndScale(insetLeft, gHeight, 1, -1))
     # Change origin to bottom-left corner, use with yRange [0 gHeight]
-    # .attr("transform", scaleAndTranslate(1, -1, inset, -gHeight))
+    # .attr("transform", scaleAndTranslate(1, -1, insetLeft, -gHeight))
 
   discard g.append("g")
+    .attr("class", "x-axis axis")
     .attr("transform", translate(0, gHeight))
     .call(xAxis)
-  discard g.append("g").call(yAxis)
+  discard g.append("g")
+    .attr("class", "y-axis axis")
+    .call(yAxis)
+
+  discard svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("transform", translate(insetLeft.float + gWidth/2,
+                                 svgHeight.float - insetBottom/4))
+    .text("x axis label")
+
+  discard svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("transform", translateAndRotate(insetLeft/3, gHeight/2, -90))
+    .text("y axis label")
 
   discard g.selectAll("circle")
     .data(rawdata)
