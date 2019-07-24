@@ -2,7 +2,7 @@ import jsbind, sequtils
 
 type
   D3ContinuousScale* = ref object of JSObj
-
+  D3Axis* = ref object of JSObj
 
 
 proc scaleLinear*(): D3ContinuousScale {.jsimportgWithName: "d3.scaleLinear".}
@@ -21,3 +21,8 @@ proc continuousRange*(scale: D3ContinuousScale;
                                           cstring(x)))
 # This causes string ranges to not work as expected
 # proc continuousRange*[T](scale: D3ContinuousScale; minVal, maxVal: T): D3ContinuousScale {.jsimportgWithName: "function(scale, minVal, maxVal){return scale.range([minVal, maxVal])}".}
+
+proc axisTop*(scale: D3ContinuousScale): D3Axis {.importc: "d3.axisTop".}
+proc axisRight*(scale: D3ContinuousScale): D3Axis {.importc: "d3.axisRight".}
+proc axisBottom*(scale: D3ContinuousScale): D3Axis {.importc: "d3.axisBottom".}
+proc axisLeft*(scale: D3ContinuousScale): D3Axis {.importc: "d3.axisLeft".}

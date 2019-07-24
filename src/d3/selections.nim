@@ -1,4 +1,5 @@
 import jsbind
+from ./scaling import D3Axis
 
 type
   D3Selection* {.importc.} = ref object of JSObj
@@ -24,3 +25,5 @@ proc attr*[T, U](sel: D3Selection, name: cstring, fn: proc(d: T): U): D3Selectio
 proc text*(sel: D3Selection): cstring {.importcpp.}
 proc text*(sel: D3Selection, val: cstring): D3Selection {.importcpp.}
 proc text*(sel: D3Selection, fn: proc(x: int): cstring): D3Selection {.importcpp.}
+
+proc call*(sel: D3Selection, axis: D3Axis): D3Selection {.importcpp.}
