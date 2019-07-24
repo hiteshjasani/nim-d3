@@ -81,6 +81,11 @@ proc runOnce() =
     .attr("transform", translateAndRotate(insetLeft/3, gHeight/2, -90))
     .text("y axis label")
 
+  let tooltip = select("body")
+    .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0)
+
   discard g.selectAll("circle")
     .data(rawdata)
     .enter().append("circle")
@@ -90,15 +95,32 @@ proc runOnce() =
       .attr("fill-opacity", 0.2)
       .attr("stroke", "blue")
       .attr("fill", "blue")
+      .on("mouseover", proc(d: DataPt) =
+                         discard tooltip
+                           .html("x: " & $d.x & "<br/>" & "y: " & $d.y)
+                           .style("left", $(d3Event().pageX + 25) & "px")
+                           .style("top", $d3Event().pageY & "px")
+                         discard tooltip.transition()
+                           .duration(200)
+                           .style("opacity", 0.9))
+      .on("mouseout", proc(d: DataPt) =
+                        discard tooltip.transition()
+                          .duration(500)
+                          .style("opacity", 0.0))
 
 proc createDom(): VNode =
   result = buildHtml(tdiv):
-    h1: text "Example 5"
-    p: text "Plot circles.  The circles are only drawn once on page load and will not be redrawn even if karax redraws the vdom.  The input data is scaled so that the circles are drawn correctly."
+    h1: text "Example 5: Full graph using circles"
     tdiv:
       text "<< "
       a(href = "/"): text "home"
     tdiv(id = "testarea")
+    ul:
+      li: text "Circles are only drawn once on page load and will not be redrawn even if karax redraws the vdom"
+      li: text "Input data is scaled"
+      li: text "Circles have styling applied"
+      li: text "Graph axes and labels"
+      li: text "Hover tooltip on data points"
 
 setRenderer createDom
 setForeignNodeId("testarea")
