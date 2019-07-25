@@ -13,3 +13,9 @@ is the ability to create a simple graph today.  See
 nim-d3 is available in [nimble](https://github.com/nim-lang/nimble).
 
 `nimble install d3`
+
+## Documentation
+
+Clone the repo and generate the docs
+
+`nimble docs`
