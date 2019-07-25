@@ -1,4 +1,3 @@
-########################################################################
 ## Transformation functions
 ##
 ## SVG origin is defined to be the top-left corner. Moving right is

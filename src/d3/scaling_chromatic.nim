@@ -1,7 +1,12 @@
-#-------------------------------------------------------------------------
-# Color Schemes
-#
-# https://github.com/d3/d3-scale-chromatic
+## Color Schemes
+##
+## See for more info
+##
+## * https://github.com/d3/d3-scale-chromatic
+## * https://github.com/d3/d3-scale-chromatic#categorical
+## * https://github.com/d3/d3-scale-chromatic#diverging
+## * https://github.com/d3/d3-scale-chromatic#sequential-single-hue
+## * https://github.com/d3/d3-scale-chromatic#sequential-multi-hue
 
 
 # Categorical
