@@ -7,3 +7,9 @@ is the ability to create a simple graph today.  See
 [examples/](examples/) for usage.
 
 ![Image of example 5](img/ex5.png)
+
+## Install
+
+nim-d3 is available in [nimble](https://github.com/nim-lang/nimble).
+
+`nimble install d3`
