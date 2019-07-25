@@ -3,17 +3,26 @@ import d3
 
 const
   orig1 = 5
-var
-  scaleLin: D3ContinuousScale
-  scaleLinR: D3ContinuousScale
-  scaleLinColor: D3ContinuousScale
-  scalePieces: D3ContinuousScale
+
+let
+  scaleLin: D3ContinuousScale = scaleLinear()
+                                  .continuousDomain(0, 100)
+                                  .continuousRange(200, 500)
+  scaleLinR: D3ContinuousScale = scaleLinear()
+                                   .continuousDomain(0, 100)
+                                   .continuousRange(500, 200)
+  scaleLinColor: D3ContinuousScale = scaleLinear()
+                                       .continuousDomain(0, 100)
+                                       .continuousRange("brown", "steelblue")
+  scalePieces: D3ContinuousScale = scaleLinear()
+                                     .continuousDomain(@[-1, 0, 1])
+                                     .continuousRange(@["red", "white", "blue"])
+  scaleOrd: D3OrdinalScale = scaleOrdinal()
+                               .ordinalDomain(@[0,1,2,3])
+                               .ordinalRange(schemeRdBu(4))
 
 proc runOnce() =
-  scaleLin = scaleLinear().continuousDomain(0, 100).continuousRange(200, 500)
-  scaleLinR = scaleLinear().continuousDomain(0, 100).continuousRange(500, 200)
-  scaleLinColor = scaleLinear().continuousDomain(0, 100).continuousRange("brown", "steelblue")
-  scalePieces = scaleLinear().continuousDomain(@[-1, 0, 1]).continuousRange(@["red", "white", "blue"])
+  echo "runOnce"
 
 proc createDom(): VNode =
   result = buildHtml(tdiv):
@@ -26,42 +35,69 @@ proc createDom(): VNode =
       table:
         thead:
           tr:
-            th: text "Original"
+            th: text "Type"
             th: text "Domain"
             th: text "Range"
-            th: text "Scaled"
-            th: text "Expected"
+            th: text "Original Value"
+            th: text "Scaled Value"
+            th: text "Expected Value"
         tbody:
           tr:
+            td: text "linear continuous"
+            td: text $continuousDomain[int](scaleLin)
+            td: text $continuousRange[int](scaleLin)
             td: text $orig1
-            td: text "0 - 100"
-            td: text "200 - 500"
             td(id = "scaleLin"): text "-"
             td: text "215"
           tr:
+            td: text "linear continuous"
+            td: text $continuousDomain[int](scaleLinR)
+            td: text $continuousRange[int](scaleLinR)
             td: text $orig1
-            td: text "0 - 100"
-            td: text "500 - 200"
             td(id = "scaleLinR"): text "-"
             td: text "485"
           tr:
+            td: text "linear continuous"
+            td: text $continuousDomain[int](scaleLinColor)
+            td: text $continuousRange[cstring](scaleLinColor)
             td: text $orig1
-            td: text "0 - 100"
-            td: text "brown - steelblue"
             td(id = "scaleLinColor"): text "-"
             td: text "rgb(160, 46, 49)"
           tr:
+            td: text "linear continuous"
+            td: text $continuousDomain[int](scalePieces)
+            td: text $continuousRange[cstring](scalePieces)
             td: text "-0.5"
-            td: text "-1, 0, 1"
-            td: text "red, white, blue"
             td(id = "scalePieces1"): text "-"
             td: text "rgb(255, 128, 128)"
           tr:
+            td: text "linear continuous"
+            td: text $continuousDomain[int](scalePieces)
+            td: text $continuousRange[cstring](scalePieces)
             td: text "0.5"
-            td: text "-1, 0, 1"
-            td: text "red, white, blue"
             td(id = "scalePieces2"): text "-"
             td: text "rgb(128, 128, 255)"
+          tr:
+            td: text "ordinal"
+            td: text $ordinalDomain[int](scaleOrd)
+            td: text $ordinalRange[cstring](scaleOrd)
+            td: text "0"
+            td(id = "scaleOrd1"): text "-"
+            td: text "#ca0020"
+          tr:
+            td: text "ordinal"
+            td: text $ordinalDomain[int](scaleOrd)
+            td: text $ordinalRange[cstring](scaleOrd)
+            td: text "1"
+            td(id = "scaleOrd2"): text "-"
+            td: text "#f4a582"
+          tr:
+            td: text "ordinal"
+            td: text $ordinalDomain[int](scaleOrd)
+            td: text $ordinalRange[cstring](scaleOrd)
+            td: text "3"
+            td(id = "scaleOrd3"): text "-"
+            td: text "#0571b0"
     button(`type` = "button"):
       text "Scale values"
       proc onclick(ev: Event, n: VNode) =
@@ -71,6 +107,9 @@ proc createDom(): VNode =
                                                               orig1))
         discard select("#testarea #scalePieces1").text($exec(scalePieces, -0.5))
         discard select("#testarea #scalePieces2").text($exec(scalePieces, 0.5))
+        discard select("#testarea #scaleOrd1").text($exec(scaleOrd, 0))
+        discard select("#testarea #scaleOrd2").text($exec(scaleOrd, 1))
+        discard select("#testarea #scaleOrd3").text($exec(scaleOrd, 3))
 
 setRenderer createDom
 setForeignNodeId("testarea")
