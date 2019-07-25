@@ -14,9 +14,12 @@ bin           = @["examples"]
 requires "nim >= 0.20.0"
 requires "karax"
 
-import os
+from os import splitFile, addFileExt
 
 task pages, "Build javascript pages":
+  if dirExists("public/js"):
+    rmDir("public/js")
+
   mkDir("public/js")
   for file in listfiles("src/pages/"):
     let fileparts = splitFile(file)
