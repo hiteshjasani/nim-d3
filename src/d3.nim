@@ -1,10 +1,15 @@
-import d3 / [selections, scaling, transforms]
+## D3js Foreign Function Interace (FFI)
+##
+## .. code::nim
+##    import d3
+##
+##    d3.select("body").selectAll ....
+##
+##    select("body").selectAll ....
+##
+## The `d3` prefix is optional and really just represents the module
+## name in Nim.
 
-export selections, scaling, transforms
+import d3 / [types, transforms, d3_scale, d3_scale_chromatic, d3_selection]
 
-type
-  D3Event* = ref object
-
-proc d3Event*(): D3Event {.importc: "function(){return d3.event}".}
-proc pageX*(ev: D3Event): float {.importcpp: "#.pageX".}
-proc pageY*(ev: D3Event): float {.importcpp: "#.pageY".}
+export types, transforms, d3_scale, d3_scale_chromatic, d3_selection

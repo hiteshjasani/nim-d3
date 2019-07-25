@@ -1,7 +1,13 @@
-from ./scaling import D3Axis
+## See
+##
+## * https://github.com/d3/d3-selection
+##
 
-type
-  D3Selection* {.importc.} = ref object
+import ./types
+
+proc event*(): D3Event {.importc: "function(){ return d3.event }".}
+proc pageX*(ev: D3Event): float {.importcpp: "#.pageX".}
+proc pageY*(ev: D3Event): float {.importcpp: "#.pageY".}
 
 proc select*(tag: cstring): D3Selection {.importc: "d3.select".}
 proc select*(parent: D3Selection, tag: cstring): D3Selection {.importcpp.}

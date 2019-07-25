@@ -1,13 +1,11 @@
+## See
+##
+## * https://github.com/d3/d3-scale
+##
+
 import sequtils
 
-import scaling_chromatic
-
-export scaling_chromatic
-
-type
-  D3ContinuousScale* = ref object
-  D3OrdinalScale* = ref object
-  D3Axis* = ref object
+import ./types
 
 
 proc scaleLinear*(): D3ContinuousScale {.importc: "d3.scaleLinear".}
@@ -39,7 +37,9 @@ proc axisLeft*(scale: D3ContinuousScale | D3OrdinalScale): D3Axis {.importc: "d3
 proc scaleOrdinal*(): D3OrdinalScale {.importc: "d3.scaleOrdinal".}
 proc scaleOrdinal*(rng: cstring): D3OrdinalScale {.importc: "d3.scaleOrdinal".}
 proc scaleOrdinal*(rng: seq[cstring]): D3OrdinalScale {.importc: "d3.scaleOrdinal".}
+
 proc exec*(scale: D3OrdinalScale, i: int): cstring {.importc: "function(scale, i){ return scale(i) }".}
+
 proc ordinalDomain*[T](scale: D3OrdinalScale): seq[T] {.importc: "function(scale){ return scale.domain() }".}
 proc ordinalDomain*[T](scale: D3OrdinalScale; minVal, maxVal: T): D3OrdinalScale {.importc: "function(scale, minVal, maxVal){ return scale.domain([minVal, maxVal]) }".}
 proc ordinalDomain*(scale: D3OrdinalScale; extents: seq[int]): D3OrdinalScale {.importc: "function(scale, extents){ return scale.domain(extents) }".}

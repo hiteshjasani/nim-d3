@@ -14,7 +14,7 @@ proc createDom(): VNode =
     button(`type` = "button"):
       text "Add SVG"
       proc onclick(ev: Event, n: VNode) =
-        discard select("#testarea")
+        discard d3.select("#testarea")
           .append("svg")
             .attr("width", "500")
             .attr("height", "300")

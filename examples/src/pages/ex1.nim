@@ -1,6 +1,7 @@
 include karax/prelude
 import d3
 
+
 proc createDom(): VNode =
   result = buildHtml(tdiv):
     h1: text "Example 1"
@@ -14,7 +15,7 @@ proc createDom(): VNode =
     button(`type` = "button"):
       text "Change color"
       proc onclick(ev: Event, n: VNode) =
-        discard select("#testarea p").style("color", "red")
-        discard select("#testarea .colorable").style("color", "green")
+        discard d3.select("#testarea p").style("color", "red")
+        discard d3.select("#testarea .colorable").style("color", "green")
 
 setRenderer createDom

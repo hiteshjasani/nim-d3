@@ -5,19 +5,19 @@ const
   orig1 = 5
 
 let
-  scaleLin: D3ContinuousScale = scaleLinear()
+  scaleLin: D3ContinuousScale = d3.scaleLinear()
                                   .continuousDomain(0, 100)
                                   .continuousRange(200, 500)
-  scaleLinR: D3ContinuousScale = scaleLinear()
+  scaleLinR: D3ContinuousScale = d3.scaleLinear()
                                    .continuousDomain(0, 100)
                                    .continuousRange(500, 200)
-  scaleLinColor: D3ContinuousScale = scaleLinear()
+  scaleLinColor: D3ContinuousScale = d3.scaleLinear()
                                        .continuousDomain(0, 100)
                                        .continuousRange("brown", "steelblue")
-  scalePieces: D3ContinuousScale = scaleLinear()
+  scalePieces: D3ContinuousScale = d3.scaleLinear()
                                      .continuousDomain(@[-1, 0, 1])
                                      .continuousRange(@["red", "white", "blue"])
-  scaleOrd: D3OrdinalScale = scaleOrdinal()
+  scaleOrd: D3OrdinalScale = d3.scaleOrdinal()
                                .ordinalDomain(@[0,1,2,3])
                                .ordinalRange(schemeRdBu(4))
 

@@ -29,15 +29,13 @@ proc runOnce() =
     maxX = max(map(rawdata, proc(d: DataPt): float = d.x))
     minY = min(map(rawdata, proc(d: DataPt): float = d.y))
     maxY = max(map(rawdata, proc(d: DataPt): float = d.y))
-    xScale: D3ContinuousScale = scaleLinear()
+    xScale: D3ContinuousScale = d3.scaleLinear()
                                   .continuousDomain(minX, maxX)
                                   .continuousRange(0, gWidth)
-    yScale: D3ContinuousScale = scaleLinear()
+    yScale: D3ContinuousScale = d3.scaleLinear()
                                   .continuousDomain(minY, maxY)
                                   # Use with origin in top-left corner
                                   .continuousRange(gHeight, 0)
-                                  # Use with origin in bottom-left corner
-                                  # .continuousRange(0, gHeight)
     xAxis: D3Axis = axisBottom(xScale)
     yAxis: D3Axis = axisLeft(yScale)
 
@@ -57,10 +55,6 @@ proc runOnce() =
     .attr("height", gHeight)
     # Origin is top-left corner, use with yRange [gHeight 0]
     .attr("transform", translate(insetLeft, 0))
-    # Change origin to bottom-left corner, use with yRange [0 gHeight]
-    # .attr("transform", translateAndScale(insetLeft, gHeight, 1, -1))
-    # Change origin to bottom-left corner, use with yRange [0 gHeight]
-    # .attr("transform", scaleAndTranslate(1, -1, insetLeft, -gHeight))
 
   discard g.append("g")
     .attr("class", "x-axis axis")
@@ -98,8 +92,8 @@ proc runOnce() =
       .on("mouseover", proc(d: DataPt) =
                          discard tooltip
                            .html("x: " & $d.x & "<br/>" & "y: " & $d.y)
-                           .style("left", $(d3Event().pageX + 25) & "px")
-                           .style("top", $d3Event().pageY & "px")
+                           .style("left", $(d3.event().pageX + 25) & "px")
+                           .style("top", $d3.event().pageY & "px")
                          discard tooltip.transition()
                            .duration(200)
                            .style("opacity", 0.9))
