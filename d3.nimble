@@ -11,4 +11,3 @@ backend       = "js"
 # Dependencies
 
 requires "nim >= 0.20.0"
-requires "jsbind"

@@ -1,8 +1,7 @@
-import jsbind
 from ./scaling import D3Axis
 
 type
-  D3Selection* {.importc.} = ref object of JSObj
+  D3Selection* {.importc.} = ref object
 
 proc select*(tag: cstring): D3Selection {.importc: "d3.select".}
 proc select*(parent: D3Selection, tag: cstring): D3Selection {.importcpp.}
