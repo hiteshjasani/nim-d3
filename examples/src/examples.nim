@@ -13,7 +13,8 @@ proc index(): string =
                    ,Example(id: 2, name: "Appending elements")
                    ,Example(id: 3, name: "Scaling using domain and range")
                    ,Example(id: 4, name: "Simple plot of circles")
-                   ,Example(id: 5, name: "Full graph using circles")]
+                   ,Example(id: 5, name: "Sample scatterplot")
+                   ,Example(id: 6, name: "Seattle rainfall column chart")]
 
   result = """
 <!DOCTYPE html>

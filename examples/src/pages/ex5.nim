@@ -104,7 +104,7 @@ proc runOnce() =
 
 proc createDom(): VNode =
   result = buildHtml(tdiv):
-    h1: text "Example 5: Full graph using circles"
+    h1: text "Example 5: Sample scatterplot"
     tdiv:
       text "<< "
       a(href = "/"): text "home"
