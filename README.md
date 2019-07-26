@@ -7,6 +7,7 @@ is the ability to create a simple graph today.  See
 [examples/](examples/) for usage.
 
 ![Image of example 5](img/ex5.png)
+![Image of example 6](img/ex6.png)
 
 ## Install
 
