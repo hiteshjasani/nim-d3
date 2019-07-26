@@ -50,6 +50,13 @@ proc createDom(): VNode =
             td(id = "scaleLin"): text "-"
             td: text "215"
           tr:
+            td: text "linear continuous (invert)"
+            td: text $continuousDomain[int](scaleLin)
+            td: text $continuousRange[int](scaleLin)
+            td: text "215"
+            td(id = "scaleLinInv"): text "-"
+            td: text "5"
+          tr:
             td: text "linear continuous"
             td: text $continuousDomain[int](scaleLinR)
             td: text $continuousRange[int](scaleLinR)
@@ -102,6 +109,7 @@ proc createDom(): VNode =
       text "Scale values"
       proc onclick(ev: Event, n: VNode) =
         discard select("#testarea #scaleLin").text($exec(scaleLin, orig1))
+        discard select("#testarea #scaleLinInv").text($invert(scaleLin, 215))
         discard select("#testarea #scaleLinR").text($exec(scaleLinR, orig1))
         discard select("#testarea #scaleLinColor").text($exec(scaleLinColor,
                                                               orig1))

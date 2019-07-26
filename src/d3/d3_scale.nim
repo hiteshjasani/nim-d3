@@ -11,6 +11,8 @@ import ./types
 proc scaleLinear*(): D3ContinuousScale {.importc: "d3.scaleLinear".}
 proc exec*(scale: D3ContinuousScale, v: int): int {.importc: "function(scale, v){ return scale(v) }".}
 proc exec*(scale: D3ContinuousScale, v: float): float {.importc: "function(scale, v){ return scale(v) }".}
+proc invert*(scale: D3ContinuousScale, v: int): int {.importc: "function(scale, v){ return scale.invert(v) }".}
+proc invert*(scale: D3ContinuousScale, v: float): float {.importc: "function(scale, v){ return scale.invert(v) }".}
 proc continuousDomain*[T](scale: D3ContinuousScale): seq[T] {.importc: "function(scale){ return scale.domain() }".}
 proc continuousDomain*[T](scale: D3ContinuousScale; minVal, maxVal: T): D3ContinuousScale {.importc: "function(scale, minVal, maxVal){ return scale.domain([minVal, maxVal]) }".}
 # proc continuousDomain*(scale: D3ContinuousScale; minVal, maxVal: int): D3ContinuousScale {.importc: "function(scale, minVal, maxVal){ return scale.domain([minVal, maxVal]) }".}
