@@ -1,5 +1,10 @@
 ## currently in development
 
+## v0.1.2
+
+* Add band scale type and functions
+* Add example column chart
+
 ## v0.1.1
 
 * Removed external dependency on jsbind package
