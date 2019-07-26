@@ -34,8 +34,6 @@ proc runOnce() =
     insetBottom = 50
     gWidth = svgWidth - insetLeft
     gHeight = svgHeight - insetBottom
-    minX = min(map(rawdata, proc(d: DataPt): int = d.day))
-    maxX = max(map(rawdata, proc(d: DataPt): int = d.day))
     minY = min(map(rawdata, proc(d: DataPt): float = d.rain))
     maxY = max(map(rawdata, proc(d: DataPt): float = d.rain))
     domX = map(rawdata, proc(d: DataPt): cstring = cstring($d.day))
