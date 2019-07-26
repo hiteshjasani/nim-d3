@@ -90,7 +90,7 @@ proc routeHandler(req: Request) {.async.} =
       let jsfilename = "public" & req.url.path
       try:
         await req.respond(Http200, readFile(jsfilename),
-                          newHttpHeaders([("Content-Type","application/json")]))
+                          newHttpHeaders([("Content-Type","application/javascript")]))
       except:
         await req.respond(Http500, "Could not load " & jsfilename)
     else:
