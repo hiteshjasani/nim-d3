@@ -32,6 +32,10 @@ proc exec*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
            v: float): float {.importc: "function(scale, v){ return scale(v) }".} ## \
   ## Given a value in the domain, map to a value in the range
 
+proc exec*[T](scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+              v: T): int {.importc: "function(scale, v){ return scale(v) }".} ## \
+  ## Given a value in the domain, map to a value in the range
+
 proc invert*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
              v: int): int {.importc: "function(scale, v){ return scale.invert(v) }".} ## \
   ## Given a value in the range, map to a value in the domain
@@ -54,6 +58,10 @@ proc invert*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
 
 proc invert*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
              v: float): float {.importc: "function(scale, v){ return scale.invert(v) }".} ## \
+  ## Given a value in the range, map to a value in the domain
+
+proc invert*[T, U](scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+                   v: T): U {.importc: "function(scale, v){ return scale.invert(v) }".} ## \
   ## Given a value in the range, map to a value in the domain
 
 
@@ -88,6 +96,7 @@ proc axisBottom*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axi
   ## Horizontal axis with tick marks on the bottom
 proc axisLeft*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisLeft".} ## \
   ## Vertical axis with tick marks on the left
+proc scale*(axis: D3Axis, scaleObj: D3ContinuousScale | D3OrdinalScale | D3BandScale) {.importcpp.}
 
 
 proc scaleOrdinal*(): D3OrdinalScale {.importc: "d3.scaleOrdinal".}

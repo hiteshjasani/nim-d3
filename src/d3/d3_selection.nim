@@ -25,6 +25,15 @@ proc enter*(sel: D3Selection): D3Selection {.importcpp.}
 proc exit*(sel: D3Selection): D3Selection {.importcpp.}
 proc append*(sel: D3Selection, tag: cstring): D3Selection {.importcpp.}
 proc remove*(sel: D3Selection): D3Selection {.importcpp.}
+proc join*(sel: D3Selection, tag: cstring): D3Selection {.importcpp.} ## \
+  ## Merge enter and update
+  ## .. code::javascript
+  ##    // in javascript
+  ##    svg.selectAll("circle")
+  ##      .data(data)
+  ##      .join("circle")
+  ##        .attr("fill", "none")
+  ##        .attr("stroke", "black");
 
 proc attr*(sel: D3Selection, name: cstring, val: cstring): D3Selection {.importcpp.}
 proc attr*(sel: D3Selection, name: cstring, val: int): D3Selection {.importcpp.}

@@ -1,5 +1,9 @@
 ## currently in development
 
+* Add selection.join
+* Add ability to change axis scale
+* Add support for generic scale forward and backward transforms
+
 ## v0.1.2
 
 * Add band scale type and functions
