@@ -12,3 +12,12 @@ type
 
   D3Axis* = ref object ## \
     ## Representing a coordinate axis
+
+  D3Format* = ref object ## \
+    ## Representing a number format
+
+  D3TimeFormat* = ref object ## \
+    ## Representing a time format
+
+  Date* = ref object ## \
+    ## Represents a javascript Date

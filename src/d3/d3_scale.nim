@@ -88,17 +88,6 @@ proc continuousRange*(scale: D3ContinuousScale;
 
 
 
-proc axisTop*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisTop".} ## \
-  ## Horizontal axis with tick marks on the top
-proc axisRight*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisRight".} ## \
-  ## Vertical axis with tick marks on the right
-proc axisBottom*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisBottom".} ## \
-  ## Horizontal axis with tick marks on the bottom
-proc axisLeft*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisLeft".} ## \
-  ## Vertical axis with tick marks on the left
-proc scale*(axis: D3Axis, scaleObj: D3ContinuousScale | D3OrdinalScale | D3BandScale) {.importcpp.}
-
-
 proc scaleOrdinal*(): D3OrdinalScale {.importc: "d3.scaleOrdinal".}
 proc scaleOrdinal*(rng: cstring): D3OrdinalScale {.importc: "d3.scaleOrdinal".}
 proc scaleOrdinal*(rng: seq[cstring]): D3OrdinalScale {.importc: "d3.scaleOrdinal".}
