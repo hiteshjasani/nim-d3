@@ -32,3 +32,7 @@ proc tickFormat*(axis: D3Axis, format: D3Format): D3Axis {.importcpp.} ## \
   ## .. code::javascript
   ##    // equivalent javascript
   ##    axis.tickFormat(d3.format(",.0f"));
+  ##
+  ## .. code::nim
+  ##    # in nim
+  ##    let axis = axisLeft(yScale).tickFormat(d3.format("~s"))
