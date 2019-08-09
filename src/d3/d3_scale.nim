@@ -8,7 +8,7 @@ import sequtils
 import ./types
 
 
-proc exec*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+proc exec*(scale: D3AnyScale,
            v: int): int {.importc: "function(scale, v){ return scale(v) }".} ## \
   ## Given a value in the domain, map to a value in the range
   ##
@@ -28,15 +28,15 @@ proc exec*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
   ##
   ##    x.exec(130) # 960
 
-proc exec*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+proc exec*(scale: D3AnyScale,
            v: float): float {.importc: "function(scale, v){ return scale(v) }".} ## \
   ## Given a value in the domain, map to a value in the range
 
-proc exec*[T](scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+proc exec*[T](scale: D3AnyScale,
               v: T): int {.importc: "function(scale, v){ return scale(v) }".} ## \
   ## Given a value in the domain, map to a value in the range
 
-proc invert*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+proc invert*(scale: D3AnyScale,
              v: int): int {.importc: "function(scale, v){ return scale.invert(v) }".} ## \
   ## Given a value in the range, map to a value in the domain
   ##
@@ -56,11 +56,11 @@ proc invert*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
   ##
   ##    x.invert(960) # 130
 
-proc invert*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+proc invert*(scale: D3AnyScale,
              v: float): float {.importc: "function(scale, v){ return scale.invert(v) }".} ## \
   ## Given a value in the range, map to a value in the domain
 
-proc invert*[T, U](scale: D3ContinuousScale | D3OrdinalScale | D3BandScale;
+proc invert*[T, U](scale: D3AnyScale,
                    v: T): U {.importc: "function(scale, v){ return scale.invert(v) }".} ## \
   ## Given a value in the range, map to a value in the domain
 

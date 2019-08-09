@@ -7,18 +7,18 @@ import sequtils
 
 import ./types
 
-proc axisTop*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisTop".} ## \
+proc axisTop*(scale: D3AnyScale): D3Axis {.importc: "d3.axisTop".} ## \
   ## Horizontal axis with tick marks on the top
-proc axisRight*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisRight".} ## \
+proc axisRight*(scale: D3AnyScale): D3Axis {.importc: "d3.axisRight".} ## \
   ## Vertical axis with tick marks on the right
-proc axisBottom*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisBottom".} ## \
+proc axisBottom*(scale: D3AnyScale): D3Axis {.importc: "d3.axisBottom".} ## \
   ## Horizontal axis with tick marks on the bottom
-proc axisLeft*(scale: D3ContinuousScale | D3OrdinalScale | D3BandScale): D3Axis {.importc: "d3.axisLeft".} ## \
+proc axisLeft*(scale: D3AnyScale): D3Axis {.importc: "d3.axisLeft".} ## \
   ## Vertical axis with tick marks on the left
 
 proc scale*[T](axis: D3Axis): T {.importcpp.} ## \
   ## Return the current scale object
-proc scale*(axis: D3Axis, scaleObj: D3ContinuousScale | D3OrdinalScale | D3BandScale) {.importcpp.} ## \
+proc scale*(axis: D3Axis, scaleObj: D3AnyScale) {.importcpp.} ## \
   ## Set the axis scale
 
 proc ticks*(axis: D3Axis, count: int): D3Axis {.importcpp.} ## \

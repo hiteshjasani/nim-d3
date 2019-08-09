@@ -10,6 +10,8 @@ type
   D3BandScale* = ref object ## \
     ## Similar to ordinal scale except output range is continuous and numeric
 
+  D3AnyScale* = D3ContinuousScale or D3OrdinalScale or D3BandScale
+
   D3Axis* = ref object ## \
     ## Representing a coordinate axis
 
