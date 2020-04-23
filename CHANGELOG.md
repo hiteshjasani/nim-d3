@@ -1,4 +1,7 @@
-## [currently in development](https://github.com/hiteshjasani/nim-d3/compare/v0.1.2...master)
+## [currently in development](https://github.com/hiteshjasani/nim-d3/compare/v0.1.3...master)
+
+
+## [v0.1.3 - 2020-04-23](https://github.com/hiteshjasani/nim-d3/compare/v0.1.2...v0.1.3)
 
 * Add selection.join
 * Add ability to change axis scale

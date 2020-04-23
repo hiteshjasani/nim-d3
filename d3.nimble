@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.2"
+version       = "0.1.3"
 author        = "Hitesh Jasani"
 description   = "Nim bindings to D3js"
 license       = "MIT"
