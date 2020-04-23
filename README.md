@@ -1,5 +1,7 @@
 # nim-d3
 
+![test-build-examples](https://github.com/hiteshjasani/nim-d3/workflows/test-build-examples/badge.svg?branch=master)
+
 Nim Foreign Function Interface (FFI) bindings to [d3.js](https://d3js.org).
 
 This is in development and there is still a lot to be written.  There
