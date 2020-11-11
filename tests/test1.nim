@@ -9,4 +9,4 @@ import unittest
 
 import d3
 test "can add":
-  check add(5, 5) == 10
+  check 5 + 5 == 10
